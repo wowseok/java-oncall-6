@@ -21,18 +21,19 @@ public class Maincontroller {
 
     private void assignEmergencyWork() {
         outputView.printIntroMessage();
-        service.setUp(InputView.readLine());
+        service.setMonthAndStartDay(InputView.readLine());
     }
 
-    private void inputWeekdayWork(){
+    private void inputWeekdayWork(){ // 평일
         outputView.printWeekdayWork();
-        service.setUpMembers(InputView.readLine());
+        service.setUpWeekdayMembers(InputView.readLine());
     }
 
-    private void inputWeekendWork(){
+    private void inputWeekendWork(){ // 주말
         outputView.printWeekendWork();
-        service.setUpMembers(InputView.readLine());
+        service.setUpWeekendMembers(InputView.readLine());
     }
+
 
 
     private void process(Runnable action) {
