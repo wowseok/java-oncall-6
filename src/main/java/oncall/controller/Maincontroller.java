@@ -15,8 +15,7 @@ public class Maincontroller {
 
     public void run() {
         process(this::assignEmergencyWork);
-        process(this::inputWeekdayWork);
-        process(this::inputWeekendWork);
+        process(this::inputMembers);
     }
 
     private void assignEmergencyWork() {
@@ -24,16 +23,12 @@ public class Maincontroller {
         service.setMonthAndStartDay(InputView.readLine());
     }
 
-    private void inputWeekdayWork(){ // 평일
+    private void inputMembers() { // 평일
         outputView.printWeekdayWork();
         service.setUpWeekdayMembers(InputView.readLine());
-    }
-
-    private void inputWeekendWork(){ // 주말
         outputView.printWeekendWork();
         service.setUpWeekendMembers(InputView.readLine());
     }
-
 
 
     private void process(Runnable action) {

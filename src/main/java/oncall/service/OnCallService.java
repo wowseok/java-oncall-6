@@ -2,32 +2,27 @@ package oncall.service;
 
 import static java.lang.Integer.parseInt;
 
+import java.util.Arrays;
 import oncall.domain.date.Date;
+import oncall.domain.schedule.Scheduler;
 import oncall.util.Utility;
 
 public class OnCallService {
-    private Date date;
-    private String [] weekdayMembers;
-    private String [] weekendMembers;
+
+    private final Scheduler scheduler = Scheduler.getInstance();
+
     public void setMonthAndStartDay(String input) {
-        String [] data = input.split(",",-1);
-        Date.isValidDay(data[1]);
-        this.date = Date.fromMonth(parseInt(data[0])); // 객체 가져오기.
+        String[] data = Utility.commaSplit(input);
+        scheduler.setDate(Date.fromMonth(parseInt(data[0]), data[1]));
     }
 
-    public void setUpWeekdayMembers(String input){
-        String [] weekdayMembers = Utility.commaSplit(input);
-        for(String str : weekdayMembers){
-            
-        }
+    public void setUpWeekdayMembers(String input) {
+        scheduler.addWeekdayMembers(Arrays.asList(Utility.commaSplit(input)));
     }
 
-    public void setUpWeekendMembers(String input){
-        String [] weekendMembers = Utility.commaSplit(input);
+    public void setUpWeekendMembers(String input) {
+        scheduler.addWeekendMembers(Arrays.asList(Utility.commaSplit(input)));
 
     }
-
-
-
 
 }
