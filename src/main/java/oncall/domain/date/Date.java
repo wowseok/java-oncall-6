@@ -1,6 +1,5 @@
 package oncall.domain.date;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,17 +20,23 @@ public enum Date {
     private final int month;
     private final int lastDay;
     private String startDay;
-    private static String[] DAYS = {"월", "화", "수", "목", "금", "토", "일"};
+    private static final List<String> DAYS = Arrays.asList("월", "화", "수", "목", "금", "토", "일");
 
 
     Date(int month, int lastDay, String startDay) {
         this.month = month;
         this.lastDay = lastDay;
+
         this.startDay = startDay;
     }
 
     public void setStartDay(String startDay) {
         this.startDay = startDay;
+    }
+
+    public void setNextDay(String day) {
+
+        this.startDay = DAYS.get((DAYS.indexOf(day) + 1) % DAYS.size());
     }
 
     public int getMonth() {
@@ -59,8 +64,7 @@ public enum Date {
     }
 
     public static boolean isValidDay(String input) {
-        List<String> Days = new ArrayList<>(Arrays.asList(DAYS));
-        if (!Days.contains(input)) {
+        if (!DAYS.contains(input)) {
             throw new IllegalArgumentException("요일이 올바르지 않습니다.");
         }
         return true;

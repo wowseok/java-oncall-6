@@ -22,7 +22,7 @@ public class OnCallService {
 
     public void setUpWeekendMembers(String input) {
         scheduler.addWeekendMembers(Arrays.asList(Utility.commaSplit(input)));
-
+        scheduler.assignDutySchedule();
     }
 
 }
