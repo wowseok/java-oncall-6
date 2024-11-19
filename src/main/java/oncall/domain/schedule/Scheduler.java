@@ -30,14 +30,12 @@ public class Scheduler {
 
     public void addWeekdayMembers(List<String> members) {
         SchedulerValidator.weekMembersValidate(members);
-        LinkedList<String> list = new LinkedList<>((members));
-        this.weekdayMembers = list;
+        this.weekdayMembers = new LinkedList<>((members));
     }
 
     public void addWeekendMembers(List<String> members) {
         SchedulerValidator.weekendMembersValidate(members, this.weekdayMembers);
-        LinkedList<String> list = new LinkedList<>((members));
-        this.weekendMembers = list;
+        this.weekendMembers = new LinkedList<>((members));
     }
 
     public void setDate(Date date) {
