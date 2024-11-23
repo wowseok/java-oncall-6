@@ -23,7 +23,7 @@ public class Maincontroller {
         service.setMonthAndStartDay(InputView.readLine());
     }
 
-    private void inputMembers() { // 평일
+    private void inputMembers() {
         outputView.printWeekdayWork();
         service.setUpWeekdayMembers(InputView.readLine());
         outputView.printWeekendWork();

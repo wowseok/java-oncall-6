@@ -3,7 +3,8 @@ package oncall.service;
 import static java.lang.Integer.parseInt;
 
 import java.util.Arrays;
-import oncall.domain.date.Date;
+import oncall.domain.date.DayOfWeek;
+import oncall.domain.date.MonthInfo;
 import oncall.domain.schedule.Scheduler;
 import oncall.util.Utility;
 
@@ -13,7 +14,8 @@ public class OnCallService {
 
     public void setMonthAndStartDay(String input) {
         String[] data = Utility.commaSplit(input);
-        scheduler.setDate(Date.fromMonth(parseInt(data[0]), data[1]));
+        scheduler.setMonthInfo(MonthInfo.fromMonth(parseInt(data[0])));
+        scheduler.setStartDay(DayOfWeek.fromName((data[1])));
     }
 
     public void setUpWeekdayMembers(String input) {
